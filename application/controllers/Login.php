@@ -187,7 +187,7 @@ class Login extends CI_Controller
 
             if ($validity === true) {
                 $user_id = $this->user_model->register_user($data);
-                $this->email_model->signup_mail($user_id);
+                $this->email_model->signup_mail($user_id , $this->input->post('password'));
             } else {
                 $this->user_model->register_user_update_code($data, $data['status']);
             }

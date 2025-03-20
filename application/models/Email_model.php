@@ -40,7 +40,7 @@ class Email_model extends CI_Model
 		}
 	}
 
-	function signup_mail($new_user_id = ""){
+	function signup_mail($new_user_id = "" , $password = ""){
 		//Editable
 		$type = 'signup';
 		//End editable
@@ -54,6 +54,7 @@ class Email_model extends CI_Model
 				$to_user = $this->db->get_where('users', array('role_id' => 1))->row_array();
 				$replaces['user_name'] = $new_user['first_name'].' '.$new_user['last_name'];
 				$replaces['user_email'] = $new_user['email'];
+				$replaces['user_password'] = $password;
 			}
 			if($user_type == 'user'){
 				$to_user = $this->db->get_where('users', array('id' => $new_user_id))->row_array();
